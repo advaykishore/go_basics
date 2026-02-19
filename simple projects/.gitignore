@@ -1,0 +1,56 @@
+############################
+# Go
+############################
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go build cache
+/build/
+/bin/
+dist/
+
+# Go modules
+/pkg/mod/
+/go.sum
+
+############################
+# Environment files
+############################
+.env
+.env.*
+!.env.example
+
+
+############################
+# Neo4j
+############################
+# Neo4j data and logs
+neo4j/data/
+neo4j/logs/
+neo4j/import/
+neo4j/metrics/
+
+# Docker volumes (if using Neo4j Docker)
+**/neo4j-data/
+**/neo4j-logs/
+
+
+############################
+# IDEs & Editors
+############################
+.vscode/
+.idea/
+*.swp
+*.swo
+
+############################
+# OS files
+############################
+.DS_Store
+Thumbs.db
