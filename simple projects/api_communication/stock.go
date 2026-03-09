@@ -27,7 +27,6 @@ func orderHandler(c *gin.Context) {
 		return
 	}
 
-	// Just return order info (NO inventory update)
 	c.JSON(200, req)
 }
 
@@ -38,7 +37,6 @@ func updateInventoryHandler(c *gin.Context) {
 		return
 	}
 
-	// Convert request → JSON
 	data, _ := json.Marshal(input)
 
 	resp, err := http.Post("http://localhost:8080/order", "application/json", bytes.NewBuffer(data))
@@ -50,11 +48,9 @@ func updateInventoryHandler(c *gin.Context) {
 
 	body, _ := io.ReadAll(resp.Body)
 
-	// Parse order response
 	var orderResp OrderRequest
 	json.Unmarshal(body, &orderResp)
 
-	// Reduce inventory
 	if inventory[orderResp.Product] < orderResp.Quantity {
 		c.JSON(400, gin.H{"error": "not enough stock"})
 		return
